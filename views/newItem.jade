@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1 Add a New Pinterest Item
+  p Each ingredient should have a name and price. Please add these attributes accordingly in the form below.
+  form(method="POST", action="/edibles/new")
+    | Pinterest URL: 
+    input(type="text", name="pinterestURL")
+    | Recipe URL: 
+    input(type="text", name="recipeURL")
+    | Ingredients - each on a separate line with no - please!
+    textarea(rows="10", cols="30", name="availIngredients")
+    input(type="submit")

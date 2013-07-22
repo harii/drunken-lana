@@ -1,0 +1,23 @@
+extends layout
+
+block scripts
+  script.
+    $(document).ready(function() {
+      $('#submit').click(function(){
+        $.get('/', {ingredList: $('#availIngredients').val().split("\r\n")}
+          , function (data) {
+            $('#edibleList').html(data);
+        });
+      });
+    });
+
+block content
+  h1= Recipe Finder!
+  div Enter Available Ingredients, each one on a separate line:
+    textarea(rows="10", cols="30", id="availIngredients")
+    input(type="button", id="submit", value="Ingredients")
+
+  div(id="edibleList") Here's what you can make!
+    each item, i in edibles
+      div PHOTO #{edible.pinterestURL}  // JAVASCRIPT + MAKE THIS A HYPERLINK TO THE RECIPE PAGE
+        p NAME #{edible.pinterestURL}  // JAVASCRIPT ABOVE + MAKE THIS A HYPERLINK TO THE PINTEREST PAGE
